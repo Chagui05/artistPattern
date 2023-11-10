@@ -7,13 +7,13 @@ import logic.LineStrat;
 public class LinePainter extends Painter  {
 	
 	 private int thickness;
-	 private int size;
+	 private PainterType type;
 	
-	public LinePainter(int x, int y, int size, int thickness, Color color) {
-		super(x, y, color);
-		this.size = size;
+	public LinePainter(int x, int y, int thickness, int size, Color color) {
+		super(x, y,size,color);
 		this.thickness = thickness;
 		this.drawer = new LineStrat(this);
+		type = PainterType.LINE;
 	}
 
 	public int getThickness() {
@@ -23,13 +23,4 @@ public class LinePainter extends Painter  {
 	public void setThickness(int thickness) {
 		this.thickness = thickness;
 	}
-
-	public int getSize() {
-		return size;
-	}
-
-	public void setSize(int size) {
-		this.size = size;
-	}
-	
 }
