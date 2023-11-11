@@ -24,14 +24,12 @@ public class LineStrat implements IDrawableStrat{
                 panel.addComponent(LineStrat.this); 
             }
         });
-//		System.out.println("hii");
-//		panel.addComponent(this);
 	}
 	
 	 public void paintComp(Graphics g) {
-		System.out.println("drawing a line");
-		System.out.println(line.getSize());
-		System.out.println(line.getThickness());
+//		System.out.println("drawing a line");
+//		System.out.println(line.getSize());
+//		System.out.println(line.getThickness());
 			
         Graphics2D g2d = (Graphics2D) g;
 	    g2d.setColor(line.getColor());

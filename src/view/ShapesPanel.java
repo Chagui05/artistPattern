@@ -17,7 +17,6 @@ public class ShapesPanel extends JPanel {
     private static volatile ShapesPanel instance; 
 
     private ShapesPanel() {
-    	setBackground(Color.BLACK);
         setPreferredSize(new Dimension(600, 700));
         setMinimumSize(new Dimension(1, 1));
 
@@ -38,7 +37,7 @@ public class ShapesPanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-    	System.out.println("paintComponentaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//    	System.out.println("paintComponentaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         super.paintComponent(g);
         for (IDrawableStrat shape : shapes) {
         	shape.paintComp(g);
@@ -47,7 +46,7 @@ public class ShapesPanel extends JPanel {
 
     public void addComponent(IDrawableStrat shape) {
         shapes.add(shape);
-        System.out.println("addedd"+shapes.size());
+//        System.out.println("addedd"+shapes.size());
         this.repaint();
     }
 

@@ -54,14 +54,14 @@ public class PainterFac {
 		System.out.println(size+" "+x+" "+prevPainter.getType());
 		
 		if(prevPainter.getType() == PainterType.DOT) {
-			x += 30;
-			y += 40;
+			x += 100;
+			y += 100;
 			size += 10;
 			result = new LinePainter(x,y,lineThickness.getNext(),size,colors.getNext());
 		}
 		else if(prevPainter.getType()== PainterType.LINE){
-			x -= 20;
-			y -= 30;
+			x += 100;
+			y += 100;
 			if(x<0) {
 				x= (x+(-x))+30;
 			}
@@ -72,8 +72,8 @@ public class PainterFac {
 			result = new PolygonPainter(x, y, size,polygonSides.getNext(),colors.getNext());
 		}
 		else if(prevPainter.getType()== PainterType.POLYGON){
-			x += 30;
-			y -=10;
+			x += 60;
+			y -=50;
 			if (y<0) {
 				y = (y+(-y))+30;
 			}
@@ -83,7 +83,7 @@ public class PainterFac {
 			}
 			result = new DotPainter(x, y, size,colors.getNext());
 		}
-		System.out.println("result"+size+" "+x+" "+prevPainter.getType());
+		System.out.println("result "+size+" "+x+" "+" "+y+" "+prevPainter.getType());
 		return result;
 	}
 	

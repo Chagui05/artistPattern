@@ -28,14 +28,14 @@ public class Main {
 		sides.add(4);
 		sides.add(5);
 		Vector<Integer> thicknesses = new Vector<>();
-		thicknesses.add(30);
+		thicknesses.add(4);
 		thicknesses.add(5);
 		thicknesses.add(15);
 		
 		//primer elemento a elegir;
 		DotPainter circle = new DotPainter(200,200,40, red);
 		PolygonPainter poly = new PolygonPainter(100, 100, 33,5,red);
-		LinePainter line = new LinePainter(10000, 2, 900, 1, red);
+		LinePainter line = new LinePainter(100, 2, 900, 1, red);
 		PolygonWindow window = PolygonWindow.getInstance();
 		//
 		
@@ -46,7 +46,7 @@ public class Main {
 		
 		
 		
-		WindowController control = new WindowController(window,line);
+		WindowController control = new WindowController(window,circle);
 		SwingUtilities.invokeLater(new Runnable() {
 		    @Override
 		    public void run() {

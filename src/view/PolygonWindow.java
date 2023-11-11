@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -55,14 +57,14 @@ public class PolygonWindow extends JFrame {
 				numberOfPainters.setText("Number of Painters");
 			}
 		});
-		setLayout(new BorderLayout());
 		setLayout(new GridLayout(2,1));
 		mainPanel.add(numberOfDrawings);
 		mainPanel.add(numberOfPainters);
 		mainPanel.add(drawButton);
+		this.add(mainPanel);
+		mainPanel.setPreferredSize(new Dimension(100, 50));
 		this.add(ShapesPanel.getInstance());
 		ShapesPanel.getInstance().revalidate();
-		this.add(mainPanel);
 	}
 
 	public int getPainters() {
