@@ -1,6 +1,9 @@
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -52,7 +55,8 @@ public class PolygonWindow extends JFrame {
 				numberOfPainters.setText("Number of Painters");
 			}
 		});
-
+		setLayout(new BorderLayout());
+		setLayout(new GridLayout(2,1));
 		mainPanel.add(numberOfDrawings);
 		mainPanel.add(numberOfPainters);
 		mainPanel.add(drawButton);

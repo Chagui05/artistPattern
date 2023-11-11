@@ -67,9 +67,5 @@ public class MainThread extends Thread{
 			}
 			System.out.println(" ");
 		}
-		
-		for (IDrawableStrat shape : ShapesPanel.getInstance().getShapes()) {
-        	System.out.println(1);
-        }
 	}
 }

@@ -2,6 +2,8 @@ package logic;
 
 import java.awt.Graphics;
 
+import javax.swing.SwingUtilities;
+
 import model.PolygonPainter;
 import view.ShapesPanel;
 
@@ -14,8 +16,15 @@ public class PolygonStrat implements IDrawableStrat {
 
 	@Override
 	public void draw(ShapesPanel panel) {
-		System.out.println("hii");
-		panel.addComponent(this);
+		SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("hii");
+                panel.addComponent(PolygonStrat.this); 
+            }
+        });
+		//		System.out.println("hii");
+//		panel.addComponent(this);
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package model;
 
 import java.awt.Color;
 
+import javax.swing.SwingUtilities;
+
 import logic.IDrawableStrat;
 import view.ShapesPanel;
 
@@ -20,8 +22,13 @@ public abstract class Painter {
 	}
 	
 	public void drawByPainter() {
-		ShapesPanel panel = ShapesPanel.getInstance();
-		drawer.draw(panel) ;
+		SwingUtilities.invokeLater(new Runnable() {
+	        @Override
+	        public void run() {
+	            ShapesPanel panel = ShapesPanel.getInstance();
+	            drawer.draw(panel);
+	        }
+	    });
 	}
 	
 	public Color getColor() {

@@ -47,10 +47,17 @@ public class Main {
 		
 		
 		WindowController control = new WindowController(window,line);
-		SwingUtilities.invokeLater(() -> {
-            window.setVisible(true);
-        });
-	
+		SwingUtilities.invokeLater(new Runnable() {
+		    @Override
+		    public void run() {
+		    	window.setVisible(true);
+		    }
+		});
+		
+//		SwingUtilities.invokeLater(() -> {
+//            
+//        });
+//	
 	}
 
 }

@@ -2,6 +2,8 @@ package logic;
 
 import java.awt.Graphics;
 
+import javax.swing.SwingUtilities;
+
 import model.DotPainter;
 import view.ShapesPanel;
 
@@ -12,8 +14,15 @@ public class DotStrat implements IDrawableStrat{
 		this.dot = dot;
 	}
 	public void draw(ShapesPanel panel) {
-		System.out.println("hii");
-		panel.addComponent(this);
+		SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("hii");
+                panel.addComponent(DotStrat.this); 
+            }
+        });	
+//		System.out.println("hii");
+//		panel.addComponent(this);
 	}
 	@Override
 	public void paintComp(Graphics g) {

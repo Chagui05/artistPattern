@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import javax.swing.SwingUtilities;
 
 import model.LinePainter;
 import view.ShapesPanel;
@@ -16,8 +17,15 @@ public class LineStrat implements IDrawableStrat{
 	}
 	@Override
 	public void draw(ShapesPanel panel) {
-		System.out.println("hii");
-		panel.addComponent(this);
+		SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("hii");
+                panel.addComponent(LineStrat.this); 
+            }
+        });
+//		System.out.println("hii");
+//		panel.addComponent(this);
 	}
 	
 	 public void paintComp(Graphics g) {

@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.lang.reflect.InvocationTargetException;
@@ -16,7 +17,9 @@ public class ShapesPanel extends JPanel {
     private static volatile ShapesPanel instance; 
 
     private ShapesPanel() {
-        setPreferredSize(new Dimension(800, 700));
+    	setBackground(Color.BLACK);
+        setPreferredSize(new Dimension(600, 700));
+        setMinimumSize(new Dimension(1, 1));
 
     }
     
@@ -35,6 +38,7 @@ public class ShapesPanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+    	System.out.println("paintComponentaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         super.paintComponent(g);
         for (IDrawableStrat shape : shapes) {
         	shape.paintComp(g);
@@ -42,21 +46,9 @@ public class ShapesPanel extends JPanel {
     }
 
     public void addComponent(IDrawableStrat shape) {
-    	
-    	try {
-            SwingUtilities.invokeAndWait(new Runnable() {
-                @Override
-                public void run() {
-                    shapes.add(shape);
-                    repaint();
-                }
-            });
-        } catch (InterruptedException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
         shapes.add(shape);
-        System.out.println("addedd");
-        repaint();
+        System.out.println("addedd"+shapes.size());
+        this.repaint();
     }
 
 	public List<IDrawableStrat> getShapes() {
