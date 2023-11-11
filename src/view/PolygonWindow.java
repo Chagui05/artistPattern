@@ -35,7 +35,7 @@ public class PolygonWindow extends JFrame {
 	}
 	private PolygonWindow() {
 		setTitle("Polygon Drawer");
-		setSize(900, 800);
+		setSize(1700, 1700);
 		setLocation(400, 100);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -56,6 +56,8 @@ public class PolygonWindow extends JFrame {
 		mainPanel.add(numberOfDrawings);
 		mainPanel.add(numberOfPainters);
 		mainPanel.add(drawButton);
+		this.add(ShapesPanel.getInstance());
+		ShapesPanel.getInstance().revalidate();
 		this.add(mainPanel);
 	}
 

@@ -7,6 +7,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import iterator.Iter;
 import logic.*;
 import model.Painter;
+import view.ShapesPanel;
 
 public class MainThread extends Thread{
 	private Iter<PainterThread> painters;
@@ -63,8 +64,12 @@ public class MainThread extends Thread{
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}	
+			}
 			System.out.println(" ");
 		}
+		
+		for (IDrawableStrat shape : ShapesPanel.getInstance().getShapes()) {
+        	System.out.println(1);
+        }
 	}
 }

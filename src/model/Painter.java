@@ -3,6 +3,7 @@ package model;
 import java.awt.Color;
 
 import logic.IDrawableStrat;
+import view.ShapesPanel;
 
 public abstract class Painter {
 	protected Color color;
@@ -19,7 +20,8 @@ public abstract class Painter {
 	}
 	
 	public void drawByPainter() {
-		drawer.draw() ;
+		ShapesPanel panel = ShapesPanel.getInstance();
+		drawer.draw(panel) ;
 	}
 	
 	public Color getColor() {

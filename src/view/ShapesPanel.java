@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,15 +36,32 @@ public class ShapesPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (IDrawableStrat s : shapes) {
-            s.draw(g);
+        for (IDrawableStrat shape : shapes) {
+        	shape.paintComp(g);
         }
     }
 
     public void addComponent(IDrawableStrat shape) {
+    	
+    	try {
+            SwingUtilities.invokeAndWait(new Runnable() {
+                @Override
+                public void run() {
+                    shapes.add(shape);
+                    repaint();
+                }
+            });
+        } catch (InterruptedException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
         shapes.add(shape);
+        System.out.println("addedd");
         repaint();
     }
+
+	public List<IDrawableStrat> getShapes() {
+		return shapes;
+	}
 
 
 }
