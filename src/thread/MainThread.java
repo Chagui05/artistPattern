@@ -1,6 +1,8 @@
 package thread;
 
+import java.util.Iterator;
 import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import iterator.Iter;
 import logic.*;
@@ -21,11 +23,12 @@ public class MainThread extends Thread{
 		factory = PainterFac.getInstance();
 		
 		PainterThread firstPainter = new PainterThread(fPainter);
-		firstPainter.start();
+		System.out.println("first painter"+firstPainter.id);////fepoo
 		painters.addElement(firstPainter);
 		notifier.addObserver(Event.NEXTPAINTER, firstPainter);
 		notifier.addObserver(Event.DRAWINGMADE, new StopCreatingDraws(amountOfDrawings, this));
 		notifier.addObserver(Event.PAINTERCREATED, new StopCreatingPainters(amountOfPainters, this));
+		firstPainter.start();
 	}
 	
 	public void setRunning(boolean running) {
@@ -35,27 +38,24 @@ public class MainThread extends Thread{
 	public void setCreatingProcces(boolean creatingProcces) {
 		this.creatingProcces = creatingProcces;
 	}
-
-
 	@Override
 	public void run() {
 		while(running) {
 			System.out.println("run run");
+			PainterThread oldPainter = painters.getNext();
+			System.out.println("old painter"+oldPainter.id);////fepoo
 			if(creatingProcces) {
-				Painter newPaint = painters.getNext().getPainter();
-				System.out.println("paint" );
-				System.out.println(newPaint == null);
-				PainterThread newPainter = new PainterThread(newPaint) ;//poner painter actual
-				painters.addElement(newPainter);
+				System.out.println("paint: "+(oldPainter.getPainter() == null));
+				PainterThread newPainter = new PainterThread(oldPainter.getPainter());
+				System.out.println("New painter"+newPainter.id+(newPainter.getPainter().getSize()));////fepoo
+				painters.addElement(newPainter);;
 				notifier.addObserver(Event.NEXTPAINTER, newPainter);
 				newPainter.start();
-				
 				notifier.notify(Event.PAINTERCREATED);
 				System.out.println("sirvio");
 			}
 			
-			painters.getNext().update(Event.NEXTPAINTER);
-			System.out.println("trying to draw");
+			oldPainter.update(Event.NEXTPAINTER);
 			notifier.notify(Event.DRAWINGMADE);
 			
 			try {
@@ -64,6 +64,7 @@ public class MainThread extends Thread{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
+			System.out.println(" ");
 		}
 	}
 }

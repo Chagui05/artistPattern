@@ -41,11 +41,12 @@ public class Main {
 		LinePainter line = new LinePainter(10000, 2, 900, 1, red);
 		PolygonWindow window = new PolygonWindow();
 		
+		
 		PainterFac factory = PainterFac.getInstance();
 		factory.addColors(colors);
 		factory.addLineThickness(thicknesses);
 		factory.addPolygonSides(sides);
-		
+		System.out.println("antes de todo "+circle.getSize()+" "+circle.getType());
 		MainThread mThread = new MainThread(circle, 10, 20);
 		mThread.start();
 		

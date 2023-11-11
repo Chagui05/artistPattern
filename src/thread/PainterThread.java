@@ -6,15 +6,18 @@ import logic.PainterFac;
 import model.Painter;
 
 public class PainterThread extends Thread implements IDrawObserver {
-	
+	private static int idcounter = 0;
+	public int id;
 	private boolean turnToDraw;
 	private boolean drawing = true;
 	private Painter painter;
+	private PainterFac factory = PainterFac.getInstance();
 
 	public PainterThread(Painter pPainter) {
-		PainterFac factory = PainterFac.getInstance();
 		painter = factory.create(pPainter);
 		this.turnToDraw = false;
+		id =idcounter;
+		idcounter++;
 	}
 	public void turnOffDrawing() {
 		drawing = false;
@@ -39,7 +42,7 @@ public class PainterThread extends Thread implements IDrawObserver {
 		
 		while(drawing) {
 			tryingToDraw();
-			System.out.println("in a subThread "+(this.turnToDraw == false));
+//			System.out.println("in a subThread "+(this.turnToDraw == false));
 			
 			try {
 				Thread.sleep(60);

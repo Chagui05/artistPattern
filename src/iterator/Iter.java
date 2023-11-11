@@ -1,35 +1,35 @@
 package iterator;
 
 
-import java.util.Iterator;
+import java.util.Iterator;	
 import java.util.Vector;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.List;
 
 
 public class Iter<T> {
-    private List<T> elements;
-    private Iterator<T> iter;
+    private volatile List<T> elements;
+    private volatile Iterator<T> iter;
 
     public Iter(List<T> pList) {
         this.elements = new CopyOnWriteArrayList<>(pList);
         this.iter = elements.iterator();
     }
 
-    public T getNext() {
+    public synchronized T getNext() {
         if (hasNext()) {
             return iter.next();
         } else {
             iter = elements.iterator();
-            return iter.next();
+            return getNext();
         }
     }
 
-    public boolean hasNext() {
+    public synchronized boolean hasNext() {
         return iter.hasNext();
     }
 
-    public void addElement(T element) {
+    public synchronized void addElement(T element) {
         elements.add(element);
     }
 }

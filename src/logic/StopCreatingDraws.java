@@ -15,7 +15,7 @@ public class StopCreatingDraws implements IDrawObserver {
 	public void update(Event type) {
 		System.out.println("drawings: " +numberOfDrawings);
 		if(numberOfDrawings < 0) {
-			mThread.setCreatingProcces(false);
+			mThread.setRunning(false);
 		}	
 		else {
 			numberOfDrawings--;

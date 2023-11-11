@@ -7,7 +7,6 @@ import logic.LineStrat;
 public class LinePainter extends Painter  {
 	
 	 private int thickness;
-	 private PainterType type;
 	
 	public LinePainter(int x, int y, int thickness, int size, Color color) {
 		super(x, y,size,color);

@@ -45,17 +45,19 @@ public class PainterFac {
 	
 	
 	public Painter create(Painter prevPainter) {
+		
 		Painter result = null;
 		int size = prevPainter.getSize();
 		int x = prevPainter.getX();
 		int y = prevPainter.getY();
 		Color color = prevPainter.getColor();
+		System.out.println(size+" "+x+" "+prevPainter.getType());
 		
 		if(prevPainter.getType() == PainterType.DOT) {
 			x += 30;
 			y += 40;
 			size += 10;
-			result= new LinePainter(x,y,lineThickness.getNext(),size,colors.getNext());
+			result = new LinePainter(x,y,lineThickness.getNext(),size,colors.getNext());
 		}
 		else if(prevPainter.getType()== PainterType.LINE){
 			x -= 20;
@@ -69,7 +71,7 @@ public class PainterFac {
 			size -=10;
 			result = new DotPainter(x, y, size,colors.getNext());
 		}
-		
+		System.out.println("result"+size+" "+x+" "+prevPainter.getType());
 		return result;
 	}
 	
