@@ -19,7 +19,7 @@ public abstract class Painter {
 	}
 	
 	public void drawByPainter() {
-		drawer.draw();
+		drawer.draw() ;
 	}
 	
 	public Color getColor() {

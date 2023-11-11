@@ -1,6 +1,8 @@
 package logic;
 
+import java.awt.Graphics;
+
 public interface IDrawableStrat {
-	
-	public void draw();
+
+	void draw(Graphics g);
 }

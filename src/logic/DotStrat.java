@@ -1,5 +1,7 @@
 package logic;
 
+import java.awt.Graphics;
+
 import model.DotPainter;
 
 public class DotStrat implements IDrawableStrat{
@@ -8,7 +10,7 @@ public class DotStrat implements IDrawableStrat{
 	public DotStrat(DotPainter dot) {
 		this.dot = dot;
 	}
-	public void draw() {
+	public void draw(Graphics g) {
 		System.out.println("drawing a Dot");
 		System.out.println(dot.getX());
 		System.out.println(dot.getY());	

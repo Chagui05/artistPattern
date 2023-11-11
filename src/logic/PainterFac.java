@@ -61,14 +61,26 @@ public class PainterFac {
 		}
 		else if(prevPainter.getType()== PainterType.LINE){
 			x -= 20;
-			y -= 30;	
+			y -= 30;
+			if(x<0) {
+				x= (x+(-x))+30;
+			}
+			if (y<0) {
+				y = (y+(-y))+30;
+			}
 			size += 30;
 			result = new PolygonPainter(x, y, size,polygonSides.getNext(),colors.getNext());
 		}
 		else if(prevPainter.getType()== PainterType.POLYGON){
 			x += 30;
 			y -=10;
+			if (y<0) {
+				y = (y+(-y))+30;
+			}
 			size -=10;
+			if (size <0) {
+				size = (size+(-size))+30;
+			}
 			result = new DotPainter(x, y, size,colors.getNext());
 		}
 		System.out.println("result"+size+" "+x+" "+prevPainter.getType());

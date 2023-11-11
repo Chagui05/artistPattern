@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -10,14 +11,29 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import logic.ObserverNotifier;
+
 // MVC structure taken from https://www.newthinktank.com/2013/02/mvc-java-tutorial/
 public class PolygonWindow extends JFrame {
 
 	private JTextField numberOfDrawings = new JTextField(10);
 	private JTextField numberOfPainters = new JTextField(10);
 	private JButton drawButton = new JButton("start!!!");
-
-	public PolygonWindow() {
+	private static volatile PolygonWindow instance; 
+	
+	public static PolygonWindow getInstance() {
+		PolygonWindow result = instance;
+		if(result == null) {
+			synchronized(PolygonWindow.class) {
+				result = instance;
+				if(result == null) {
+					instance = result = new PolygonWindow();
+				}
+			}
+		}
+		return result; 
+	}
+	private PolygonWindow() {
 		setTitle("Polygon Drawer");
 		setSize(900, 800);
 		setLocation(400, 100);

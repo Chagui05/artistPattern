@@ -26,7 +26,7 @@ public class MainThread extends Thread{
 		System.out.println("first painter"+firstPainter.id);////fepoo
 		painters.addElement(firstPainter);
 		notifier.addObserver(Event.NEXTPAINTER, firstPainter);
-		notifier.addObserver(Event.DRAWINGMADE, new StopCreatingDraws(amountOfDrawings, this));
+		notifier.addObserver(Event.DRAWINGMADE, new StopCreatingDraws(amountOfDrawings,amountOfPainters, this));
 		notifier.addObserver(Event.PAINTERCREATED, new StopCreatingPainters(amountOfPainters, this));
 		firstPainter.start();
 	}

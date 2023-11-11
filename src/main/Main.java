@@ -18,12 +18,10 @@ public class Main {
 		Color red = new Color(255,0,0);
 		Color green = new Color(0, 255, 0);
 		Color blue = new Color(0, 0, 255);
-
 		Vector<Color> colors = new Vector<>();
 		colors.add(red);
 		colors.add(green);
 		colors.add(blue);
-		
 		Vector<Integer> sides = new Vector<>();
 		sides.add(3);
 		sides.add(6);
@@ -34,24 +32,24 @@ public class Main {
 		thicknesses.add(5);
 		thicknesses.add(15);
 		
-		
-		
+		//primer elemento a elegir;
 		DotPainter circle = new DotPainter(200,200,40, red);
 		PolygonPainter poly = new PolygonPainter(100, 100, 33,5,red);
 		LinePainter line = new LinePainter(10000, 2, 900, 1, red);
-		PolygonWindow window = new PolygonWindow();
-		
+		PolygonWindow window = PolygonWindow.getInstance();
+		//
 		
 		PainterFac factory = PainterFac.getInstance();
 		factory.addColors(colors);
 		factory.addLineThickness(thicknesses);
 		factory.addPolygonSides(sides);
-		System.out.println("antes de todo "+circle.getSize()+" "+circle.getType());
-		MainThread mThread = new MainThread(circle, 10, 20);
-		mThread.start();
 		
-//		WindowController control = new WindowController(window);
-//		window.setVisible(true);
+		
+		
+		WindowController control = new WindowController(window,line);
+		SwingUtilities.invokeLater(() -> {
+            window.setVisible(true);
+        });
 	
 	}
 

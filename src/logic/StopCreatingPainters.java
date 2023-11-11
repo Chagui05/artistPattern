@@ -14,7 +14,7 @@ public class StopCreatingPainters implements IDrawObserver {
 	@Override
 	public void update(Event type) {
 		System.out.println("painters: " +numberOfPainters);
-		if(numberOfPainters < 0) {
+		if(numberOfPainters <= 0) {
 			mThread.setCreatingProcces(false);
 		}	
 		else {
