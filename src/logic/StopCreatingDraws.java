@@ -22,14 +22,7 @@ public class StopCreatingDraws implements IDrawObserver {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			mThread.setRunning(true);
-			mThread.setCreatingProcces(true);
-			try {
-				mThread.join();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		}	
 		else {
 			numberOfDrawings--;

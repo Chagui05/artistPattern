@@ -5,7 +5,7 @@ import logic.IDrawObserver;
 import logic.PainterFac;
 import model.Painter;
 
-public class PainterThread extends Thread implements IDrawObserver {
+public class PainterThread extends Thread  {
 	private static int idcounter = 0;
 	public int id;
 	private boolean turnToDraw;
@@ -21,10 +21,10 @@ public class PainterThread extends Thread implements IDrawObserver {
 	}
 	public void turnOffDrawing() {
 		drawing = false;
+		System.out.println("thread off");
 	}
 	
-	@Override
-	public void update(Event type) {
+	public void turnToDrawOn() {
 		System.out.println("updated");
 			this.turnToDraw = true;
 	}

@@ -27,7 +27,7 @@ public class LineStrat implements IDrawableStrat{
 	}
 	
 	 public void paintComp(Graphics g) {
-//		System.out.println("drawing a line");
+		System.out.println("drawing a line");
 //		System.out.println(line.getSize());
 //		System.out.println(line.getThickness());
 			

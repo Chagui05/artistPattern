@@ -26,7 +26,6 @@ public class MainThread extends Thread{
 		PainterThread firstPainter = new PainterThread(fPainter);
 		System.out.println("first painter"+firstPainter.id);////fepoo
 		painters.addElement(firstPainter);
-		notifier.addObserver(Event.NEXTPAINTER, firstPainter);
 		notifier.addObserver(Event.DRAWINGMADE, new StopCreatingDraws(amountOfDrawings,amountOfPainters, this));
 		notifier.addObserver(Event.PAINTERCREATED, new StopCreatingPainters(amountOfPainters, this));
 		firstPainter.start();
@@ -50,13 +49,12 @@ public class MainThread extends Thread{
 				PainterThread newPainter = new PainterThread(oldPainter.getPainter());
 				System.out.println("New painter"+newPainter.id+(newPainter.getPainter().getSize()));////fepoo
 				painters.addElement(newPainter);;
-				notifier.addObserver(Event.NEXTPAINTER, newPainter);
 				newPainter.start();
 				notifier.notify(Event.PAINTERCREATED);
 				System.out.println("sirvio");
 			}
 			
-			oldPainter.update(Event.NEXTPAINTER);
+			oldPainter.turnToDrawOn();
 			notifier.notify(Event.DRAWINGMADE);
 			
 			try {
@@ -66,6 +64,10 @@ public class MainThread extends Thread{
 				e.printStackTrace();
 			}
 			System.out.println(" ");
+		}
+		System.out.println("finalizaron dibujos");
+		for(int i = 0; i < painters.getElements().size(); i++) {
+			painters.getElements().get(i).turnOffDrawing();
 		}
 	}
 }

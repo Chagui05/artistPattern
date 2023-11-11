@@ -20,17 +20,14 @@ public class PolygonStrat implements IDrawableStrat {
 		SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                System.out.println("hii");
                 panel.addComponent(PolygonStrat.this); 
             }
         });
-		//		System.out.println("hii");
-//		panel.addComponent(this);
 	}
 
 	@Override
 	public void paintComp(Graphics g) {
-//		System.out.println("drawing a polygon");
+		System.out.println("drawing a polygon");
 //		System.out.println(polygon.getX());
 //		System.out.println(polygon.getY());	
 //		System.out.println(polygon.getSides());	

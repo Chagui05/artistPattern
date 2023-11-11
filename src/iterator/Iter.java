@@ -32,4 +32,10 @@ public class Iter<T> {
     public synchronized void addElement(T element) {
         elements.add(element);
     }
+
+	public List<T> getElements() {
+		return elements;
+	}
+
 }
+

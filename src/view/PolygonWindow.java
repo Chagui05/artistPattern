@@ -40,8 +40,8 @@ public class PolygonWindow extends JFrame {
 	}
 	private PolygonWindow() {
 		setTitle("Polygon Drawer");
-		setSize(1700, 1700);
-		setLocation(400, 100);
+		setSize(1400, 1050);
+		setLocation(400, 0);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		JPanel mainPanel = new JPanel();

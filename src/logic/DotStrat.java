@@ -28,7 +28,7 @@ public class DotStrat implements IDrawableStrat{
 	}
 	@Override
 	public void paintComp(Graphics g) {
-//		System.out.println("drawing a Dot");
+		System.out.println("drawing a Dot");
 //		System.out.println(dot.getX());
 //		System.out.println(dot.getY());	
 //		System.out.println(dot.getSize());
